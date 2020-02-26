@@ -54,6 +54,10 @@ class Project(object):
         """List include files in project."""
         return [c.attrib['Include'] for c in self.xml.findall(".//{" + _MS_BUILD_NAMESPACE + "}ClInclude") if 'Include' in c.attrib]
     
+    def custom_build_files(self):
+        """List custom build files in project."""
+        return [c.attrib['Include'] for c in self.xml.findall(".//{" + _MS_BUILD_NAMESPACE + "}CustomBuild") if 'Include' in c.attrib]
+
     def __item_groups_for_config(self, platform, configuration):
         groups = self.xml.findall("./{" + _MS_BUILD_NAMESPACE + "}ItemDefinitionGroup")
         return list(filter(lambda g: _matches_platform_configuration(g.attrib['Condition'], platform, configuration), groups))
