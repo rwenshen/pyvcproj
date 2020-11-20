@@ -28,8 +28,9 @@ class Solution(object):
                     match = _REGEX_PROJECT_FILE.match(line)
                     if match:
                         self.projects.append(Solution.__read_project(match.groups(), f))
-                    else:
-                        print('No MATCH: {0}'.format(line))
+                    # Folder
+                    #else:
+                    #    print('No MATCH: {0}'.format(line))
                 elif line.startswith("Global"):
                     self.globals = Solution.__read_global(f)
 
